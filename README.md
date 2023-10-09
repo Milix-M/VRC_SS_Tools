@@ -4,7 +4,7 @@
 Create src/settings.json
 ```json
 {
-    "ss_path" : "path to Screenshot folder",
+    "ss_path" : "path to Screenshot folder"
 }
 ```
 
