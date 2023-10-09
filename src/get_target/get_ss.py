@@ -11,7 +11,8 @@ def get_target_ss(path: str) -> list:
     Returns:
         list: 対象のSS
     """
-    pattern = r'VRChat_\d{4}-\d{2}-\d{2}'
+    # example: VRChat_2022-11-14_21-35-14.256_1920x1080.png
+    pattern = r'VRChat_\d{4}-\d{2}-\d{2}_\d{2}-\d{2}-\d{2}.\d{3}_\d{4}x\d{4}.png'
 
     ss = []
 
