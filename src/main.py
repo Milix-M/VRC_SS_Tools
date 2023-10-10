@@ -1,10 +1,12 @@
 import json
 
 #ソートターゲットディレクトリ走査用モジュール
-from get_target import get_dir
-
+from ss import target
+from foldermnj import dirs
 
 with open("./settings.json") as f:
     settings = json.load(f)
 
-print(get_dir.get_target_dir(settings["ss_path"]))
+sort_target = target.get_target_ss(target.get_target_dir(settings["ss_path"]))
+
+dirs.make_days_dir(sort_target, settings["ss_path"])
