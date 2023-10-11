@@ -28,5 +28,6 @@ def copy_ss(ss_paths: list, path: str) -> None:
     for ss in ss_paths:
         day = re.search(r'(\d{4}-([0-1][0-9])-([0-3][0-9]))', ss)
         shutil.copy(os.path.join(path, ss), os.path.join(path, day.group()))
-        print("Complete Copy!")
+
+    print("Complete sort!")
 
