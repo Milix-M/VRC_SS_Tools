@@ -3,12 +3,15 @@ import re
 import shutil
 
 
-def copy_ss(ss_paths: list, path: str) -> None:
+def copy_ss(ss_paths: list, path: str, date_line: int) -> None:
     """日付分けごとのディレクトリを作成してSSをコピーします
 
     Args:
         ss_paths (list): 対象となるSSのパス(list)
+
         path (str): 日付分けされたSSを作成するディレクトリを指定
+
+        date_line (int): 日付変更線を指定します(0-24)
     """
 
     extracted_text = []
