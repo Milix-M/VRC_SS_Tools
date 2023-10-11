@@ -1,8 +1,8 @@
 import json
 
 #ソートターゲットディレクトリ走査用モジュール
-from ss import target
-from filemnj import dirs
+from ss import target, ss_mnj
+
 
 with open("./settings.json") as f:
     settings = json.load(f)
