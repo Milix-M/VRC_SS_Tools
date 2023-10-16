@@ -17,6 +17,9 @@ def copy_ss(ss_paths: list, path: str, date_line: int) -> None:
 
     extracted_text = []
 
+    #キー:SSのパス バリュー:格納先 の辞書
+    date_sspath_dict = {}
+
     for ss in ss_paths:
         m = re.search(r'(\d{4}-([0-1][0-9])-([0-3][0-9]))', ss)
         if m:
@@ -36,6 +39,9 @@ def copy_ss(ss_paths: list, path: str, date_line: int) -> None:
 
             #日付変更線を適用した日時をStringsに戻し日付データを格納するリストにappend
             extracted_text.append(change_time.date().strftime("%Y-%m-%d"))
+
+            date_sspath_dict[ss] = change_time.date().strftime("%Y-%m-%d")
+
 
     sorted_days  = list(dict.fromkeys(extracted_text))
 
