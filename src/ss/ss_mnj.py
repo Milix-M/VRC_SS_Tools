@@ -46,7 +46,7 @@ def copy_ss(ss_paths: list, path: str, date_line: int) -> None:
     sorted_days  = list(dict.fromkeys(extracted_text))
 
     #作成が必要なディレクトリを作成する
-    for make in list(dict.fromkeys(sorted_days)):
+    for make in sorted_days:
         if not os.path.exists(os.path.join(path, make)):
             os.makedirs(os.path.join(path, make))
 
