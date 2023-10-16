@@ -54,6 +54,7 @@ def copy_ss(ss_paths: list, path: str, date_line: int) -> None:
     #     day = re.search(r'(\d{4}-([0-1][0-9])-([0-3][0-9]))', ss)
     #     shutil.copy(os.path.join(path, ss), os.path.join(path, day.group()))
 
+    #date_sspath_dictを元にSSをコピー
     for ss_path, putting_dir in date_sspath_dict.items():
         shutil.copy(ss_path, os.path.join(path, putting_dir))
 
