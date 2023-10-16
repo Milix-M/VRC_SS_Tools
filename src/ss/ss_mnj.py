@@ -50,9 +50,12 @@ def copy_ss(ss_paths: list, path: str, date_line: int) -> None:
         if not os.path.exists(os.path.join(path, make)):
             os.makedirs(os.path.join(path, make))
 
-    for ss in ss_paths:
-        day = re.search(r'(\d{4}-([0-1][0-9])-([0-3][0-9]))', ss)
-        shutil.copy(os.path.join(path, ss), os.path.join(path, day.group()))
+    # for ss in ss_paths:
+    #     day = re.search(r'(\d{4}-([0-1][0-9])-([0-3][0-9]))', ss)
+    #     shutil.copy(os.path.join(path, ss), os.path.join(path, day.group()))
+
+    for ss_path, putting_dir in date_sspath_dict.items():
+        shutil.copy(ss_path, os.path.join(path, putting_dir))
 
     print("Complete sort!")
 
