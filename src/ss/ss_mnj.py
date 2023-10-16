@@ -53,7 +53,7 @@ def copy_ss(ss_paths: list, path: str, date_line: int) -> None:
 
     #date_sspath_dictを元にSSをコピー
     for ss_path, putting_dir in date_sspath_dict.items():
-        shutil.copy(ss_path, os.path.join(path, putting_dir))
+        shutil.copy2(ss_path, os.path.join(path, putting_dir))
 
     print("Complete sort!")
 
