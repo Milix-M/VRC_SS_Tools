@@ -4,8 +4,8 @@ import shutil
 import datetime
 
 
-def copy_ss(ss_paths: list, path: str, date_line: int) -> None:
-    """日付分けごとのディレクトリを作成してSSをコピーします
+def move_ss(ss_paths: list, path: str, date_line: int) -> None:
+    """日付分けごとのディレクトリを作成してSSを移動します
 
     Args:
         ss_paths (list): 対象となるSSのパス(list)
@@ -51,9 +51,10 @@ def copy_ss(ss_paths: list, path: str, date_line: int) -> None:
             os.makedirs(os.path.join(path, make))
 
 
-    #date_sspath_dictを元にSSをコピー
+    #date_sspath_dictを元にSSを移動
     for ss_path, putting_dir in date_sspath_dict.items():
-        shutil.copy2(ss_path, os.path.join(path, putting_dir))
+        # shutil.copy2(ss_path, os.path.join(path, putting_dir))
+        shutil.move(ss_path, os.path.join(path, putting_dir))
 
     print("Complete sort!")
 
