@@ -1,6 +1,7 @@
 import os
 import re
 import shutil
+import datetime
 
 
 def copy_ss(ss_paths: list, path: str, date_line: int) -> None:
@@ -20,6 +21,19 @@ def copy_ss(ss_paths: list, path: str, date_line: int) -> None:
         m = re.search(r'(\d{4}-([0-1][0-9])-([0-3][0-9]))', ss)
         if m:
             extracted_text.append(m.group())
+
+            #スクリーンショットの日付情報を取得
+            time_m = re.search(r'(\d{4}-([0-1][0-9])-([0-3][0-9])_([0-2][0-9])-([0-5][0-9])-([0-5][0-9]))', ss)
+
+            #datetimeに変換
+            ss_dttime = datetime.datetime.strptime(time_m.group(), "%Y-%m-%d_%H-%M-%S")
+
+            # 日付を変更する時間（6時）を設定
+            change_time = ss_dttime.replace(hour=date_line, minute=0, second=0, microsecond=0)
+
+            # SSの日時が日付を変更する時間より前の場合、前日の6時に設定
+            if ss_dttime < change_time:
+                change_time -= datetime.timedelta(days=1)
 
     sorted_days  = list(dict.fromkeys(extracted_text))
 
