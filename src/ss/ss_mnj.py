@@ -20,7 +20,6 @@ def copy_ss(ss_paths: list, path: str, date_line: int) -> None:
     for ss in ss_paths:
         m = re.search(r'(\d{4}-([0-1][0-9])-([0-3][0-9]))', ss)
         if m:
-            extracted_text.append(m.group())
 
             #スクリーンショットの日付情報を取得
             time_m = re.search(r'(\d{4}-([0-1][0-9])-([0-3][0-9])_([0-2][0-9])-([0-5][0-9])-([0-5][0-9]))', ss)
@@ -34,6 +33,9 @@ def copy_ss(ss_paths: list, path: str, date_line: int) -> None:
             # SSの日時が日付を変更する時間より前の場合、前日の6時に設定
             if ss_dttime < change_time:
                 change_time -= datetime.timedelta(days=1)
+
+            #日付変更線を適用した日時をStringsに戻し日付データを格納するリストにappend
+            extracted_text.append(change_time.date().strftime("%Y-%m-%d"))
 
     sorted_days  = list(dict.fromkeys(extracted_text))
 
