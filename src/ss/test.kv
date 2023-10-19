@@ -1,0 +1,40 @@
+
+<TextWidget>:
+    canvas.before:
+        Color:
+            rgba: 250, 253, 255, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    TextInput:
+        id: text1
+        size: 200, 30
+        pos: 50, 70
+        line_height: 1
+        multiline: False
+        hint_text: '日付変更線を入力...'
+
+    TextInput:
+        id: text1
+        size: 200, 30
+        pos: 50, 120
+        line_height: 1
+        multiline: False
+        hint_text: 'ファイルパスを入力...'
+
+    Label:
+        id: label1
+        size: 300,50
+        pos: 0,150
+        font_size: 18
+        text: "VRC SS Tools"
+        color: 0, 0, 0, 1
+
+
+    Button:
+        id: button1
+        size: 100,40
+        pos: 100,10
+        text: "O K"
+        font_size: 18
