@@ -1,7 +1,7 @@
 # フル画面を解除して画面の幅と高さを設定
 from kivy.config import Config
 Config.set('graphics', 'fullscreen', '0')
-Config.set('graphics', 'width', '300')
+Config.set('graphics', 'width', '360')
 Config.set('graphics', 'height', '200')
 Config.set('graphics', 'resizable', 0)
 
