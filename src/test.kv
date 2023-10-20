@@ -1,5 +1,7 @@
 
 <TextWidget>:
+    input: input1
+
     canvas.before:
         Color:
             rgba: 250, 253, 255, 1
@@ -8,7 +10,7 @@
             size: self.size
 
     TextInput:
-        id: text1
+        id: input2
         size: 200, 30
         pos: 50, 70
         line_height: 1
@@ -16,7 +18,7 @@
         hint_text: '日付変更線を入力...'
 
     TextInput:
-        id: text1
+        id: input1
         size: 200, 30
         pos: 50, 120
         line_height: 1
@@ -38,3 +40,4 @@
         pos: 100,10
         text: "O K"
         font_size: 18
+        on_press: root.buttonClicked()
