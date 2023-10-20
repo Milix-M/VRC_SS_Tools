@@ -12,19 +12,26 @@ from kivy.app import App
 from kivy.uix.widget import Widget
 from kivy.properties import StringProperty, ObjectProperty
 
-
 class TextWidget(Widget):
     text = StringProperty()
     input = ObjectProperty()
+    input2 = ObjectProperty()
 
     def __init__(self, **kwargs):
         super(TextWidget, self).__init__(**kwargs)
+
+        with open("./settings.json") as f:
+            settings = json.load(f)
+
+        self.input.text = settings["ss_path"]
+        self.input2.text = str(settings["date_line"])
 
     def buttonClicked(self):
         with open("./settings.json") as f:
             settings = json.load(f)
 
         settings["ss_path"] = self.input.text
+        settings["date_line"] = int(self.input2.text)
 
         with open("./settings.json", "w") as f:
             json.dump(settings, f, indent=2)
