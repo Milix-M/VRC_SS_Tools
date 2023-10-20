@@ -8,6 +8,7 @@ Config.set('graphics', 'resizable', 0)
 import japanize_kivy
 import json
 
+from kivy.clock import Clock
 from kivy.app import App
 from kivy.uix.widget import Widget
 from kivy.properties import StringProperty, ObjectProperty
@@ -25,6 +26,12 @@ class TextWidget(Widget):
 
         self.input.text = settings["ss_path"]
         self.input2.text = str(settings["date_line"])
+
+        Clock.schedule_interval(self.update, 10)
+
+    def update(self, dt):
+        print("update")
+        #ここにSS整理ロジックを入れる
 
     def buttonClicked(self):
         with open("./settings.json") as f:
