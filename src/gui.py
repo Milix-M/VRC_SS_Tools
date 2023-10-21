@@ -13,6 +13,8 @@ from kivy.app import App
 from kivy.uix.widget import Widget
 from kivy.properties import StringProperty, ObjectProperty
 
+from ss import target, ss_mnj
+
 class TextWidget(Widget):
     text = StringProperty()
     input = ObjectProperty()
@@ -30,8 +32,13 @@ class TextWidget(Widget):
         Clock.schedule_interval(self.update, 10)
 
     def update(self, dt):
-        print("update")
-        #ここにSS整理ロジックを入れる
+        with open("./settings.json") as f:
+            settings = json.load(f)
+
+        sort_target = target.get_target_ss(target.get_target_dir(settings["ss_path"]))
+        ss_mnj.move_ss(sort_target, settings["ss_path"], settings["date_line"])
+
+        print("sort !")
 
     def buttonClicked(self):
         with open("./settings.json") as f:
