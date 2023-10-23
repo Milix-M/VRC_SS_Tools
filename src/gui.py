@@ -7,6 +7,7 @@ Config.set('graphics', 'resizable', 0)
 
 import japanize_kivy
 import json
+import os
 
 from kivy.clock import Clock
 from kivy.app import App
@@ -38,7 +39,12 @@ class TextWidget(Widget):
         sort_target = target.get_target_ss(target.get_target_dir(settings["ss_path"]))
         ss_mnj.move_ss(sort_target, settings["ss_path"], settings["date_line"])
 
-        print("sort !")
+        #不要になったYYYY-MMディレクトリを削除
+        for i in target.get_target_dir(settings["ss_path"]):
+            try:
+                os.rmdir(i)
+            except OSError:
+                pass
 
     def buttonClicked(self):
         with open("./settings.json") as f:
